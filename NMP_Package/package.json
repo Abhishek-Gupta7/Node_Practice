@@ -1,0 +1,19 @@
+{
+  "name": "nmp_package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhi",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.6.6",
+    "react-dom": "^18.2.0",
+    "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "jshint": "^2.13.5"
+  }
+}
