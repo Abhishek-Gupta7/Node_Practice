@@ -21,16 +21,19 @@ exports.insertGenre = async(req,res) => {
     }
 }
 
-exports.getGenre = async(req,res) => {
-    try {
-        const result = await Genre.find();
-        console.log(result);
-        if (!result) return res.status(400).send("Opps! No Genre found.");
+exports.getGenre = async(req,res,next) => {
     
-        res.status(200).send(result);
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).send(error.message)
-    }
+    next(new Error('could not get data'));
+    
+    // try {
+    //     const result = await Genre.find();
+    //     console.log(result);
+    //     if (!result) return res.status(400).send("Opps! No Genre found.");
+    
+    //     res.status(200).send(result);
+    // } catch (error) {
+    //     console.log(error.message);
+    //     res.status(500).send(error.message)
+    // }
 
 }
