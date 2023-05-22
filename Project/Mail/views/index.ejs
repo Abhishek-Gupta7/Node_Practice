@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="background-color: beige;">Hi <%= name%>,Welcome to EJS template Engine......</h1>
+    <b>Email : <%= data.email%></b><br>
+    <b>Phone : <%= data.phone%></b><br>
+    <b>Address : <%= data.address%></b>
+    <ul>
+        <% data.skills.forEach((value) => {%>
+            <li><%= value %></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
