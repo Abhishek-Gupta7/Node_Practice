@@ -32,7 +32,7 @@ exports.insertUser = async( req,res) => {
 
 }
 
-exports.getUser = async(req,res) => {
+exports.getUser = async(req,resp) => {
     const user = await User.find();
     if (user.length > 0) return res.status(200).send(user);
     res.status(400).send("No User Found");

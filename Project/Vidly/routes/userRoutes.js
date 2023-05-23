@@ -9,7 +9,8 @@ const trycatchHandler = require('../Middleware/trycatchHandler');
 
 
 router.post('/insertUser',image.upload,controller.insertUser);
+router.get('/',controller.getUser);
 
-router.get('/',authWare.auth,adminWare.isAdmin,trycatchHandler(controller.getUser));
+// router.get('/',authWare.auth,adminWare.isAdmin,trycatchHandler(controller.getUser));
 
 module.exports = router;

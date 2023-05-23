@@ -10,7 +10,8 @@ app.listen(Port,() => console.log(`Server listening on ${Port}`));
 app.set('view engine','ejs');
 
 app.get('/',(req,res,next) => {
-    let data = {email : 'amy@gmail.com',
+    let data = {
+    email : 'amy@gmail.com',
     phone:3873763737,
     address:'xyz',
     skills : ['Node','React','Java']
@@ -20,4 +21,12 @@ app.get('/',(req,res,next) => {
         data:data
     });
     // res.send("Hellooooo")
-})
+});
+
+app.get('/about',(req,res,next) => {
+    res.render('about');
+});
+
+app.get('/home',(req,res,next) => {
+    res.render('home');
+});

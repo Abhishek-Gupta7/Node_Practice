@@ -27,7 +27,7 @@ const customerRouter = require('./routes/customerRoutes');
 const userRouter = require('./routes/userRoutes');
 const loginRouter = require('./routes/loginRoutes');
 const errorHandler = require('./Middleware/error');
-const { info } = require("console");
+
 
 
 app.use('/',movieRouter);
@@ -39,7 +39,10 @@ app.use('/user',userRouter);
 
 
 winston.add(new winston.transports.File({filename:'logFile.log'}));
-winston.add(new winston.transports.MongoDB({db:'mongodb://0.0.0.0:27017/Vidly',level:'info'}))
+winston.add(new winston.transports.MongoDB({db:'mongodb://0.0.0.0:27017/Vidly',
+    level:'info',
+    options:{useUnifiedTopology: true }
+}))
 // For incorrect output
 app.all('*',(req,res) => {
     res.status(404).send(`Page not found. ${req.originalUrl} not found`)
@@ -62,12 +65,27 @@ app.use(function(req, res, next) {
 //     res.send({"Error :":err.message});
 // });
 app.use(errorHandler);
+
 winston.createLogger(
+    new winston.transports.Console(),
     new winston.transports.File({filename:'handleException.log'})
 );
-process.on('unhandledRejection',(error) => {
-    console.log('unhandledRejection',error.message);
-    throw error;
-} )
-throw new Error('generat')
+
+    // winston.ExceptionHandler(
+    //     new winston.transports.File({filename:'handleException.log'})
+    // );
+
+
+process.on('unhandledRejection',(reason, promise) => {
+    console.log('Unhandled Rejection at:',promise, 'reason:', reason);
+    exit(1);
+    // Application specific logging, throwing an error, or other logic here
+})
+.on('uncaughtException', (err , origin) => {
+    console.log('uncaughtException',err,origin);
+})
+
+
+
 module.exports = app;
+// throw new Error('oops something fail');
