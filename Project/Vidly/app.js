@@ -6,6 +6,8 @@ const path = require('path');
 const app = express();
 const db = require('./Database/db');
 const morgan = require('morgan');
+const helmet = require('helmet');
+const compression  = require('compression');
 
 if (app.get('env') === 'development') {
     app.use(morgan('tiny'));    
@@ -13,8 +15,10 @@ if (app.get('env') === 'development') {
 }
 
 app.use(express.json());
+app.use(helmet());
+app.use(compression());
 app.use(express.urlencoded({extended : false}));
-app.use(express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname,'public')));
 // Connecting to database
 const dbConnection = db.dbConnection;
     dbConnection();
