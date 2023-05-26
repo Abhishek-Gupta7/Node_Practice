@@ -23,7 +23,7 @@ exports.insertGenre = async(req,res) => {
 
 exports.getGenre = async(req,res,next) => {
     
-    next(new Error('could not get data'));
+    next(new Error(`Data not found to url${req.url}`));
     
     // try {
     //     const result = await Genre.find();
