@@ -12,18 +12,21 @@ module.exports = fileFieldReader = async(file) => {
         const desireSheet = readData.Sheets[readData.SheetNames[i]];
         if(!desireSheet) break;
         let range = reader.utils.decode_range(desireSheet['!ref']);
-            for (let i = range.s.r + 1; i < range.e.r; i++) {
+            for (let i = range.s.r + 2; i < range.e.r + 2; i++) {
                 
                 for(let cell of cellExtract){
                         let cellName = desireSheet[`${cell}${1}`].v;
                         // console.log(cellName); 
                         // const cellAddress = reader.utils.encode_cell({ r: i, c: i });
                         let cellAddress = `${cell}${i}`;
+                        // console.log(cellAddress);
                         desireField[`${cellName}`] = desireSheet[cellAddress].v;
                         // console.log("Row",desireField);
-                        data.push(desireField);
                 }
+                data.push(desireField);
+                desireField = {}
             }
+            // console.log("DATA : ",data);
     }
     // console.log(data);
     // let result = await Financial.bulkCreate(data);

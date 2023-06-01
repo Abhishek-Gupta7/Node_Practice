@@ -27,6 +27,7 @@ exports.insertUser = async( req,res) => {
         res.send("photo");
     } catch (error) {
         console.log("Error : ",error.message);
+        console.log("Stack : ",error.stack);
         res.status(500).send(error.message);
     }
 

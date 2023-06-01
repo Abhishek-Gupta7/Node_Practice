@@ -95,8 +95,8 @@ process.on('unhandledRejection',(reason, promise) => {
 .on('uncaughtException', (err , origin) => {
         logger.error(err.message,err);
         console.log('uncaughtException : ',err,origin);
-        fs.writeFileSync('./logs/error.log', `Message:${err.message} Stack:${err}\n`, { flag: 'a' });
-        process.exit(1);
+        // fs.writeFileSync('./logs/error.log', `Message:${err.message} Stack:${err}\n`, { flag: 'a' });
+        // process.exit(1);
 })
 .on('warning',(e) => {
     console.log("warning : ",e);
@@ -104,10 +104,11 @@ process.on('unhandledRejection',(reason, promise) => {
 
 
 module.exports = app;
-// throw new Error('oops something fail');
-
 
 const emitter = new EventEmitter()
 emitter.setMaxListeners(100)
 // or 0 to turn off the limit
-emitter.setMaxListeners(0)       
+emitter.setMaxListeners(0)
+
+throw new Error('oops something fail');
+

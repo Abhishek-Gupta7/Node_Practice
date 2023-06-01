@@ -22,14 +22,13 @@ Financial.init({
         
     },
     unit_sold:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.DECIMAL,
         allowNull:false
     },
     sale_price:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.DECIMAL,
         allowNull:false
     }
-
 },
 {
     sequelize,

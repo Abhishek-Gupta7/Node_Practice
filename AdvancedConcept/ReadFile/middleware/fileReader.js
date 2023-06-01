@@ -9,11 +9,17 @@ module.exports = fileReader = async(file) => {
         const temp = reader.utils.sheet_to_json(readData.Sheets[readData.SheetNames[i]]);
         // const desireSheet = readData.Sheets[readData.SheetNames[i]];
         // // console.log('desireSheet',desireSheet);
-        const desireField = desireSheet['B4','C4','E4'];
+        // const desireField = desireSheet['B4','C4','E4'];
         temp.forEach((val) => {
-            data.push(val);
+            // console.log(val);
+            data.push({
+                country: val['Country'],
+                product: val[' Product '],
+                unit_sold: val['Units Sold']
+            });
         })
         // console.log("Column",desireField);
     }
     console.log(data);
+    return data;
 }
