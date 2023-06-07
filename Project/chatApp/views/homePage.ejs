@@ -20,14 +20,14 @@
             </div>
             <div class="title">Chat</div>
         </div>
-        <ul class="messages"></ul>
+        <ul class="messages" id="container"></ul>
         <div class="bottom_wrapper clearfix">
             <div class="message_input_wrapper">
                 <input id= 'inputType_msg'class="message_input" placeholder="Type your message here..." />
             </div>
             <div class="send_message">
                 <div class="icon"></div>
-                <div class="text" id='containerMsg'>send</div>
+                <div class="text" id='send'>send</div>
             </div>
         </div>
     </div>
@@ -209,7 +209,9 @@ body {
   width: calc(100% - 40px);
   position: absolute;
   outline-width: 0;
-  color: gray;
+  color: rgb(9, 8, 8);
+  font-weight: 600;
+  font-size: large;
 }
 .bottom_wrapper .send_message {
   width: 140px;
@@ -237,5 +239,10 @@ body {
 
 .message_template {
   display: none;
+}
+
+p{
+  color: #e8e9ea;
+  width: auto;
 }
 </style>
