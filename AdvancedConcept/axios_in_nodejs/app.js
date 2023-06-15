@@ -15,16 +15,19 @@ app.listen(PORT,()=>{
 })
 
 async function makeRequest() { 
-    let payload = { name: 'John Doe', occupation: 'gardener' };
+    // let payload = { name: 'John Doe', occupation: 'gardener' };
 
-    let res = await axios.post('http://localhost:3000',payload) 
+    let res = await axios.get('http://fakeapi.com') 
     console.log(res.data); 
+
+
 } 
 
 makeRequest();
 
-app.post('/',(req,res,next) => {
-    console.log(req.body);
+app.get('/',async (req,res,next) => {
     let arrID = ['1','2','3','4'];
+    for (let id of arrID) 
+    let res = await axios.get('http://fakeapi.com/') 
     res.send(arrID);
 })

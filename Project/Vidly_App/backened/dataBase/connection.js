@@ -12,10 +12,11 @@ let sequelize = new Sequelize(
 
 try {
     sequelize.authenticate();
-    sequelize.sync({alter:true})
-    .then(()=> {console.log('All table sync')})
-    .catch((error) => {console.log('sync error ',error)});
+    // sequelize.sync({alter:true})
+    // .then(()=> {console.log('All table sync')})
+    // .catch((error) => {console.log('sync error ',error)});
     console.log('DataBase connection successful.');
+  
 } catch (error) {
     console.log('DataBase connection fail : ',error);
 }

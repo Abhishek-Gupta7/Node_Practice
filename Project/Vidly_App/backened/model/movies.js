@@ -66,11 +66,16 @@ Movies.init({
                 msg : 'Maximum cost is $120.'
             }
         }
+    },
+    image : {
+        type:DataTypes.STRING,
+        allowNull:false,
     }
 },
 {
     sequelize,
-    modelName :'movies'
+    modelName :'movies', 
+    timestamps : false
 });
 
 module.exports = Movies;

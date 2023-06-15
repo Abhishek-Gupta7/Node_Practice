@@ -1,5 +1,7 @@
-require('./cluster');
+require('custom-env').env(true);
 require('../dataBase/connection');
+require('./cluster');
+require('../dataBase/db');
 require('./api');
 
 const app = require('../app');

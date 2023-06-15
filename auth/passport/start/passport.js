@@ -10,7 +10,7 @@ passport.use(new GoogleStrategy({
     callbackURL: process.env.GOOGLE_CALLBACKURL,
     passReqToCallback:true
 },function(req,accessToken,refreshToken,profile,done){
-    console.log(profile);
+    getProfile(profile);
     return done(null,profile);
 }
 ));
@@ -23,3 +23,9 @@ passport.serializeUser(function(user,done){
 passport.deserializeUser(function(user,done) {
     done(null,user);
 })
+
+
+function getProfile(data){
+    // console.log('function : ',data);
+
+}

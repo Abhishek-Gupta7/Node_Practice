@@ -1,4 +1,5 @@
 const Movies = require('../model/movies');
+const service = require('../services/movieService');
 
 exports.getMovies = async(req,res,next) => {
     try {
@@ -12,8 +13,12 @@ exports.getMovies = async(req,res,next) => {
 
 exports.createMovie = async (req,res,next) => {
     try {
+        // console.log(result);
+        // let result = await Movies.create(data);
+        // console.log(result.dataValues);
+        // res.send(result)
         let data = req.body;
-        let result = await Movies.create(data);
+        let result = await service.insertMovie(req,data);
         console.log(result.dataValues);
         res.send(result)
     } catch (error) {

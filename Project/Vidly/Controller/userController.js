@@ -2,7 +2,7 @@ const { User , validateUser } =  require('../Model/user');
 const bcrypt = require('bcrypt')
 const _ = require('lodash');
 
-exports.insertUser = async( req,res) => {
+exports. insertUser = async( req,res) => {
     try { 
         console.log("User File :",req.file);
         console.log(req.body);
