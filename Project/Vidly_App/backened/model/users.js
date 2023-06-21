@@ -42,6 +42,16 @@ Users.init({
             }
         }
     },
+    password : {
+        type : DataTypes.STRING,
+        allowNull:false,
+        validate : {
+            min :{
+                args : [8],
+                msg : "Minimum length of password must be 8."
+            }
+        }
+    },
     phone : {
         type:DataTypes.STRING,
         unique:true,

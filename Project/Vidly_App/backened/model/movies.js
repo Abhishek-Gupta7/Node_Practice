@@ -22,6 +22,10 @@ Movies.init({
             }
         }
     },
+    movie_type : {
+        type :DataTypes.STRING,
+        allowNull : false,
+    },
     barCode :{
         type : DataTypes.STRING,
         allowNull : false,

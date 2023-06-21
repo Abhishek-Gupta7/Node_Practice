@@ -6,9 +6,10 @@ module.exports = {
 
 async function insertMovie(req, data) {
   let image = convertImageToUrl(req.file.path);
-  let { movieName, barCode, stock, rating, rate } = data;
+  let { movieName, movie_type , barCode, stock, rating, rate } = data;
   let result = await Movies.create({
     movieName,
+    movie_type,
     barCode,
     stock,
     image,
