@@ -34,7 +34,8 @@ exports.login = async(req,res,next) => {
 
 exports.viewUsers = async(req,res,next) => {
     try {
-        let users = Users.findAll();
+        let users = await Users.findAll({attributes :{exclude:['password','role']}});
+        console.log(users);
         res.send(users);
     } catch (error) {
         next(error);

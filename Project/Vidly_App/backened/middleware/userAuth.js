@@ -3,14 +3,34 @@ const Users = require('../model/users');
 
 module.exports = async(req,res,next) => {
     let bearer = req.headers.bearer;
-    let verify = jwt.verify(bearer,process.env.JWT_SECRET);
-    let {id , email} = verify.data;
-    console.log(email);
-    let user = Users.findOne({where : {email:email}})
-    if (user) {
-        next();
-    }else{
-        throw new Error("Invalid token!")
-    }
+    jwt.verify(bearer,process.env.JWT_SECRET,(err,verify)=>{
+        if (err) {
+            // console.log('Jwt : ',err);
+            res.status(401).send("Token Expired");
+        }else{
+            if (verify) {
+                let {id , email} =  verify.data;
+                // console.log(email);
+                let user = Users.findOne({where : {email:email}})
+                if (user) {
+                    next();
+                }else{
+                    res.status(401).send("Invalid token!");
+                }
+            }
+        }
+    });
+    
     
 }
+
+// if (verify) {
+//     let {id , email} =  verify.data;
+//     // console.log(email);
+//     let user = Users.findOne({where : {email:email}})
+//     if (user) {
+//         next();
+//     }else{
+//         res.status(401).send("Invalid token!");
+//     }
+// }

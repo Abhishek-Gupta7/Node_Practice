@@ -1,5 +1,6 @@
 const {Model , DataTypes} = require('sequelize');
 const sequelize = require('../dataBase/connection');
+const Roles = require('./role');
 
 
 class Users extends Model{
@@ -70,13 +71,14 @@ Users.init({
         
     },
     role :{
-        type :DataTypes.STRING,
+        type :DataTypes.INTEGER,
     }
-},
+},    
 {
     sequelize,
     modelName :'users',
     timestamps:false
 });
+
 
 module.exports = Users;
