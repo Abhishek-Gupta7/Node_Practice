@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const sequelize = require('../dataBase/connection');
 const db = {};
 const basename = path.basename(__filename);
 
@@ -10,6 +11,6 @@ fs.readdirSync(__dirname).filter((file) => {
     db[model.name] = model;
 });
 // console.log('db : ',db);
-
+db[sequelize] = sequelize;
 
 module.exports = db;

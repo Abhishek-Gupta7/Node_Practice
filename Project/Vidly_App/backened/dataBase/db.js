@@ -16,4 +16,3 @@ if (cluster.isMaster) {
     });
 }
 
-module.exports = db;

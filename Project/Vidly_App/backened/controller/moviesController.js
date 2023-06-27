@@ -3,6 +3,7 @@ const service = require('../services/movieService');
 
 exports.getMovies = async(req,res,next) => {
     try {
+        console.log('Request :',req.url,req.method,req.originalUrl);
         let result  = await Movies.findAll({attributes : {exclude :['createdAt','updatedAt']}});
         res.send(result);
     } catch (error) {
