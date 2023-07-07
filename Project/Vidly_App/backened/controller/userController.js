@@ -19,9 +19,10 @@ exports.login = async(req,res,next) => {
         let result = await service.checkUser (req.body);
         if (result){
             let token = await generateToken(result);
+            await Users.update({token},{where : {email}});
             res.header("bearer",token)
             // console.log(token);
-            res.send('login')
+            res.send(token)
         }else{
             res.status(401).send('login fail')
         }

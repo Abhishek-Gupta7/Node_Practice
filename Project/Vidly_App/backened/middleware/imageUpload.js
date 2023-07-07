@@ -13,7 +13,7 @@ const multerStorage = multer.diskStorage({
 const upload = multer({
     storage : multerStorage,
     fileFilter : (req,file,callback) => {
-        let arrayExtension = ['.jpg','.jpeg','.gif','.png','.wiff','.svg','.WebP'];
+        let arrayExtension = ['.jpg','.jpeg','.gif','.png','.wiff','.svg','.Webp'];
         let extension = path.extname(file.originalname);
         if (arrayExtension.includes(extension)) {
             return callback(null,true);

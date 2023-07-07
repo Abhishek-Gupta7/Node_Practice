@@ -10,7 +10,6 @@ module.exports = async(req,res,next) => {
         path : req.url,
         url : req.originalUrl
     }});
-    console.log(access);
     if (access !== null) {
         next();
     }else{

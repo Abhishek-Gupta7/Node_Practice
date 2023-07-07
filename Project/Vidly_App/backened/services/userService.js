@@ -34,16 +34,8 @@ async function checkUser(data) {
   let user = await Users.findOne({ where: { email: email } });
   let { id, role } = user.dataValues;
   if (user) {
-    let hashPassword = (
-      await Users.findOne({ where: { email: email }, attributes: ["password"] })
-    ).dataValues.password;
-    // console.log('hash password : ',hashPassword);
-    let match = await bcrypt.compare(password, hashPassword);
-    if (match) {
-      return { id, role, email };
-    } else {
-      return false;
-    }
+    let match = await bcrypt.compare(password, user.password);
+    return (match) ? { id, role, email }: false;
   } else {
     return false;
   }

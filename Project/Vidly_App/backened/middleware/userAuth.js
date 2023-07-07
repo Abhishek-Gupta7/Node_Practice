@@ -9,10 +9,10 @@ module.exports = async(req,res,next) => {
             res.status(401).send(err.message);
         }else{
             if (verify) {
-                let {id , email , role} =  verify.data;
+                let {id , email , role } =  verify.data;
                 req.userData = verify.data;
                 // console.log(role);
-                let user = Users.findOne({where : {email:email}})
+                let user = Users.findOne({where : {email:email , token : bearer}})
                 if (user) {
                     next();
                 }else{

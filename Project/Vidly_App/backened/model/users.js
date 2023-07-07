@@ -72,6 +72,9 @@ Users.init({
     },
     role :{
         type :DataTypes.INTEGER,
+    },
+    token : {
+        type : DataTypes.STRING
     }
 },    
 {
